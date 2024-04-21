@@ -24,11 +24,12 @@ class SeedUser extends Seeder
         try{
             DB::beginTransaction();
             for($i = 0; $i<10; $i++) {
-                User::create([
+                $user = User::create([
                     'name'=> $faker->name(),
                     'email'=> $faker->email(),
                     'password'=>Hash::make('todak!'),
                 ]);
+                $user->createAsStripeCustomer();
             }
             DB::commit();
         }catch(Exception $exception) {
