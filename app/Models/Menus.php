@@ -11,6 +11,7 @@ class Menus extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table="menus";
     protected $fillable = [
         'name',
         'price',

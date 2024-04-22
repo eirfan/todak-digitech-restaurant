@@ -47,4 +47,10 @@ class User extends Authenticatable
     public function staffs() {
         return $this->hasMany(Staffs::class,'user_id','id');
     }
+    public function sessionUpdate() {
+        if($this->tokens) {
+            $this->tokens()->delete();
+        }
+        return $this->createToken($this->email)->plainTextToken;
+    }
 }
