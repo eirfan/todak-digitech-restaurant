@@ -29,6 +29,7 @@ class SeedDummyData extends Command
     public function handle()
     {
         $commands =[
+            'db:seed SeedUser',
             'db:seed SeedRestaurant',
             'db:seed SeedMenu',
         ];

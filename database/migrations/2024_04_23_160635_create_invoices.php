@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('restaurant_id')->unsigned();
-            // $table->bigInteger('menu_id')->unsigned();
-            $table->string('type_of_deliveries');
-            $table->string('status');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            $table->bigInteger('order_id')->unsigned();
+            $table->foreign('order_id')->on('orders')->references('id');
+            $table->decimal('total')->nullable();
+            $table->string('status')->default('incomplete');
+            $table->timestamp('paid_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('orders');
+        Schema::drop('invoices');
     }
 };

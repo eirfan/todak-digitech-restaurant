@@ -9,6 +9,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Stripe\Token;
 
 class SeedUser extends Seeder
 {
@@ -30,10 +32,12 @@ class SeedUser extends Seeder
                     'password'=>Hash::make('todak!'),
                 ]);
                 $user->createAsStripeCustomer();
+                
             }
             DB::commit();
         }catch(Exception $exception) {
             DB::rollBack();
+            Log::error($exception->getMessage());
         }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Contracts\AuthenticateInterface;
 use App\Services\AuthenticateServices;
 use Illuminate\Support\ServiceProvider;
+use Stripe\Stripe;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        Stripe::setApiKey(config('services.stripe.secret'));
         $this->app->bind(AuthenticateInterface::class,AuthenticateServices::class);
     }
 

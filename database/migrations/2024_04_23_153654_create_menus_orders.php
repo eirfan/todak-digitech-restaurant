@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('menus_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->decimal('price');
-            $table->bigInteger('restaurant_id')->unsigned();
-            $table->foreign('restaurant_id')->on('restaurants')->references('id');
-            $table->softDeletes();
+            $table->bigInteger('menu_id')->unsigned();
+            $table->bigInteger('order_id')->unsigned();
+            $table->foreign('menu_id')->references('id')->on('menus');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('menus');
+        Schema::drop('menus_orders');
     }
 };
