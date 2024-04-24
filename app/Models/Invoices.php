@@ -15,4 +15,8 @@ class Invoices extends Model
         'paid_at',
     ];
     protected $table="invoices";
+
+    public function scopeGetPaid($query) {
+        return $query->where('status','=','paid');
+    }
 }

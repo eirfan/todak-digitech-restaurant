@@ -15,6 +15,8 @@ class Restaurants extends Model
         'name',
         'address',
         'categories',
+        'operation_status',
+        'approval_status',
     ];
     public function staffs() {
         return $this->hasMany(Staffs::class,'restaurant_id','id');
