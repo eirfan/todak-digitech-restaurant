@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Restaurants;
+use App\Models\User;
 use Exception;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -54,6 +55,7 @@ class SeedRestaurant extends Seeder
                     'name'=>$restaurantFirstName[array_rand($restaurantFirstName)]." ".$restaurantLastName[array_rand($restaurantLastName)],
                     'address'=>$faker->address(),
                     'categories'=>$categories[array_rand($categories)],
+                    'manager_id'=>User::inRandomOrder()->first()->id,
                 ]);
             }
             DB::commit();

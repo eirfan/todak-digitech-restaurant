@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::table('restaurants',function(Blueprint $table) {
             $table->enum('operation_status',['active','inactive'])->default('inactive');
             $table->enum('approval_status',['pending','approve','rejected'])->default('pending');
+            $table->bigInteger('manager_id')->unsigned()->nullable();
+            $table->foreign('manager_id')->on('users')->references('id');
         });
     }
 
@@ -27,7 +29,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('restaurants',function(Blueprint $table) {
-            $table->dropColumn(['operation_status','approval_status']);
+            $table->dropColumn(['operation_status','approval_status','manager_id']);
         });
     }
 };

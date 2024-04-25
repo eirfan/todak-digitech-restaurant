@@ -94,7 +94,8 @@ class RestaurantController extends Controller
         $validator = Validator::make($request->all(),[
             'name'=>'required',
             'address'=>'required',
-            'categories'=>'required',            
+            'categories'=>'required',  
+            'manager_id'=>'required'          
         ]);
 
         try{

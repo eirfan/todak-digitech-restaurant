@@ -33,11 +33,14 @@ class OrderController extends Controller
     
             if(isset($request->isFilterOrderStatus) && filter_var($request->isFilterOrderStatus,FILTER_VALIDATE_BOOLEAN)) {
                 if(is_array($request->orderStatus)){
-                    $query = $query->whereIn('orders.status',$request->orderStatus);
+                    $query = $query->whereIn('orders.status',$request->orderStatus);    
                 }
                 if(is_string($request->orderStatus)) {
                     $query = $query->where('order.status','=',$request->orderStatus);
                 }
+            }
+            if(isset($request->managerId)) {
+                $query = $query->where('restaurants.manager_id','=',$request->managerId);
             }
     
             $restaurantOrders = $query->select(
