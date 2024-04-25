@@ -22,7 +22,7 @@ class StripeServices implements PaymentGatewayInterface {
             'amount'=>intval($invoice->total*100),
             'currency'=>'myr',
             'payment_method_types'=>['card'],
-            'customer'=>'cus_PykIRlIo6hjWRo'
+            'customer'=>$user->stripe_id
         ]);
         $confirmedPaymentIntent = $paymentIntent->confirm([
             'payment_method'=>$paymentMethod['id'],
