@@ -117,6 +117,10 @@
 > - 1. For stripe, due to the limitation of the api and testing account, we cannot set the payment method ( card ) for client due to that stripe change the menthod of assigning payment methd using front-end, meaning that it is not possible to assign dummy payment method in the backend level without fron-end.
 > > - Therefore to insert the card details, need to login to stripe and add manually payment method.
 
+> - 2. Accounts for testing purposes
+> > - email : client@todak.my
+> > - password : todak88!
+
 
 
 
