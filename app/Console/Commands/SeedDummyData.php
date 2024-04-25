@@ -34,6 +34,7 @@ class SeedDummyData extends Command
             'db:seed SeedMenu',
             'db:seed SeedRole',
             'db:seed SeedAdminAndManager',
+            'db:seed SeedTestingAccount',
         ];
 
         foreach($commands as $command) {
