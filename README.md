@@ -7,7 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Project Details
+
+
+## Project Details ( Todak Digitech Restaurant Assestment Project)
 ### 1. Technology involved
  > - Laravel 
  > - Stripe ( Payment Gateway)
@@ -15,6 +17,16 @@
  > - Spatie ( multiple roles )
  > - Sanctum ( Api Authentication )
  > - Eloquent ( ORM )
+
+ > ### 1.2. Installation
+ > - Git clone the project
+ > - Replace the .env file 
+ > - Create a new database based on the table name in env file
+ > - run php artisan optimize:clear to clear the cache
+ > - run php artisan migrate
+ > - run php artisan seed:dummy
+> > - This is customize command to initial seed the data
+
 
  ### 2. Usage guideline 
 > <b>a. To view the available restaurants and filter them based on categories</b>
@@ -64,19 +76,51 @@
 > > > - Remark : Only accessable to manager user only
 
 
+> <b>g.  Approval process for newly registered restaurants.
+> > - Api endpoints : http://localhost/restaurants
+> > - Methods : POST
+> > - Parameters : 
+> > > - name
+> > > - address 
+> > > - categories
+> > - Remark : By default, the operation status will be inactive and approval status will be pending , to approve or ban or disabled the restaurants can use the below endpoints
+
+> <b>h. Authority to ban or disable restaurants if required
+> > - Api endpoints : http://localhost/restaurants
+> > - Methods : PUT 
+> > - Parameter :
+> > > - name
+> > > - address 
 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+ ### 3. System design
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> <b>This system using system design such as </b>
+
+> - Dependency injection 
+> > - Stripe service & PaymentGateway Interface : to provide independency and decoupling in which we can change and afford to have more payment gateway easily in the future without breaking the system
+
+> - Trait 
+> > - The purpose it to provide re-usable code 
+> > - Error Traits : to process the validation error message 
+
+> - Versioning
+> > - For api endpoints, we are using versioning which is useful for mobile development support. This is due to mobile have many version need to be supported unlike web whcih will alway have latest version
+
+> - ERD Diagram
+![GitHub Logo](https://github.com/eirfan/todak-digitech-restaurant/blob/main/public/todak-digitech-restaurent%20ERD.png?raw=true)
 
 
-## Project detais
+### Importants notes
+
+> - 1. For stripe, due to the limitation of the api and testing account, we cannot set the payment method ( card ) for client due to that stripe change the menthod of assigning payment methd using front-end, meaning that it is not possible to assign dummy payment method in the backend level without fron-end.
+> > - Therefore to insert the card details, need to login to stripe and add manually payment method.
+
+
+
+
+
+
+
+
