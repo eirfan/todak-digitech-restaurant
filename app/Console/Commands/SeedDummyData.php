@@ -12,7 +12,7 @@ class SeedDummyData extends Command
      *
      * @var string
      */
-    protected $signature = 'seed:run';
+    protected $signature = 'seed:dummy';
 
     /**
      * The console command description.
@@ -32,6 +32,8 @@ class SeedDummyData extends Command
             'db:seed SeedUser',
             'db:seed SeedRestaurant',
             'db:seed SeedMenu',
+            'db:seed SeedRole',
+            'db:seed SeedAdminAndManager',
         ];
 
         foreach($commands as $command) {

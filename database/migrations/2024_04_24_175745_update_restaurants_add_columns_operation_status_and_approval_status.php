@@ -29,6 +29,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('restaurants',function(Blueprint $table) {
+            $table->dropForeign('restaurants_manager_id_foreign');
             $table->dropColumn(['operation_status','approval_status','manager_id']);
         });
     }
