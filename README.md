@@ -20,7 +20,7 @@
 > <b>a. To view the available restaurants and filter them based on categories</b>
 > > - Api endpoints : http://localhost/api/v1/restaurants
 > > - Methods = GET
-> >  - parameters :
+> >  - Parameters :
 > >  > - rowsPerPage = Control how many rows per page for restaurants to display
 > >  > - isFilterCategories = Decide if want to filter the restaurants by categories ( e.g. Western, Asian, Dessert)
 > >  > - categories = value of the categories to filter, must have if isFilterCategories is true
@@ -28,24 +28,41 @@
 > <b>b. Access to detailed restaurants information and menus</b>
 > > - Api endpoints : http://localhost/api/v1/restaurants/menus/{id}
 > > - Methods = GET
-> > - parameters : 
+> > - Parameters : 
 > > > - rowsPerPage = Control how many rows per page for menus to display
 
 > <b>c. Capabilities to place orders
 > > - Api endpoints : http://localhost/api/v1/restaurants/orders/{id}
 > > - Methods : POST
-> > - parameters : 
+> > - Parameters : 
 > > > - type_of_deliveries : value can be either pickup or deliveries
 > > > - status : By default it will be pending.
-> > - remarks : This will cretea a new order in system, can change the value of parameter for type_of_deliveries to decide either the order want delieries or pickup
+> > - Remarks : This will cretea a new order in system, can change the value of parameter for type_of_deliveries to decide either the order want delieries or pickup
 
 > <b>d. Make a payment for the invoice using stripe
 > > - Api endpoints : http://localhost/api/v1/invoices/pay/{id}
 > > - Methods : POST
-> > - remarks : The id is the invoices id, the users that want to pay for this invoice will need to have payment method in stripe for payment to be succesful, or else it will have status incomplete
+> > - Remark : The id is the invoices id, the users that want to pay for this invoice will need to have payment method in stripe for payment to be succesful, or else it will have status incomplete
 
 
 > <b>e. Manage incoming orders for their respective restaurants
+> > - Api endpoints : http://localhost/api/v1/restaurants/order/:id
+> > - Methods : GET
+> > - Parameters : 
+> > > - rows_per_page
+> > > - manager_id = To get the orders based on the manager id
+> > > - isFilterOrderStatus
+> > > - orderStatus
+> > Remark : Have logic error where there supposedly only filtered by manager_id, required ammendment
+
+> <b>f. Ability to reject customer order
+> > - Api endpoints : http://localhost/restaurants/orders/{id}
+> > - Methods : PUT 
+> > - Parameters :
+> > > - type_of_deliveries
+> > > - status
+> > > - Remark : Only accessable to manager user only
+
 
 
 

@@ -27,8 +27,10 @@ class OrderController extends Controller
         try{
             $query = DB::table('restaurants')->join('orders','orders.restaurant_id','=','restaurants.id')
             ->join('menus_orders','menus_orders.order_id','=','orders.id')
-            ->join('menus','menus.id','=','menus_orders.menu_id')
-            ->where('restaurants.id','=',$request->id);
+            ->join('menus','menus.id','=','menus_orders.menu_id');
+            if(isset($request->id)) {
+                $query = $query->where('restaurants.id','=',$request->id);
+            }
            
     
             if(isset($request->isFilterOrderStatus) && filter_var($request->isFilterOrderStatus,FILTER_VALIDATE_BOOLEAN)) {
